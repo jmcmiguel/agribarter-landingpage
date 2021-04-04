@@ -2,13 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
+import {
+  SectionHeading,
+  Subheading as SubheadingBase,
+} from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
-import SupportIconImage from "images/support-icon.svg";
-import ShieldIconImage from "images/shield-icon.svg";
-import CustomizeIconImage from "images/customize-icon.svg";
+import HomeIconImage from "images/home.svg";
+import ShieldIconImage from "images/shield.svg";
+import ShoppingCartImage from "images/shopping-cart.svg";
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
 
 const Heading = tw(SectionHeading)``;
@@ -39,7 +42,7 @@ const Card = styled.a`
   }
 
   .link {
-    ${tw`mt-auto inline-flex items-center pt-5 text-sm font-bold text-primary-300 leading-none hocus:text-primary-900 transition duration-300`}
+    ${tw`mt-auto inline-flex items-center pt-5 text-sm font-bold text-green-500 leading-none hocus:text-green-900 transition duration-300`}
     .icon {
       ${tw`ml-2 w-4`}
     }
@@ -50,41 +53,37 @@ const DecoratorBlob = styled(SvgDecoratorBlob3)`
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-40`}
 `;
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default ({
   cards = [
     {
       imageSrc: ShieldIconImage,
       title: "Secure",
-      description: "We strictly only deal with vendors that provide top notch security.",
-      url: "https://timerse.com"
+      description: "We make sure that no scams will happen on the platform.",
+      url: "#",
     },
     {
-      imageSrc: SupportIconImage,
-      title: "24/7 Support",
-      description: "Lorem ipsum donor amet siti ceali placeholder text",
-      url: "https://google.com"
+      imageSrc: HomeIconImage,
+      title: "Convenient",
+      description:
+        "Conveniently trade at any given moment, even at the comfort of your own home.",
+      url: "#",
     },
     {
-      imageSrc: CustomizeIconImage,
+      imageSrc: ShoppingCartImage,
       title: "Customizable",
-      description: "Lorem ipsum donor amet siti ceali placeholder text",
-      url: "https://reddit.com"
-    }
+      description:
+        "Find exactly what you are looking for. Just like online shopping.",
+      url: "#",
+    },
   ],
   linkText = "Learn More",
   heading = "",
   subheading = "",
   description = "",
   imageContainerCss = null,
-  imageCss = null
+  imageCss = null,
 }) => {
-  /*
-   * This componets accepts a prop - `cards` which is an array of object denoting the cards. Each object in the cards array can have the following keys (Change it according to your need, you can also add more objects to have more cards in this feature component):
-   *  1) imageSrc - the image shown at the top of the card
-   *  2) title - the title of the card
-   *  3) description - the description of the card
-   *  4) url - the url that the card should goto on click
-   */
   return (
     <Container>
       <ContentWithPaddingXl>
