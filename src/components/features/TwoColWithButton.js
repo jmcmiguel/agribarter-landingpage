@@ -49,7 +49,7 @@ export default ({
   subheading = "Our Expertise",
   heading = (
     <>
-      Designed & Developed just <span tw="text-green-500">For You</span>
+      Designed & Developed for <span tw="text-green-500">All Ages</span>
     </>
   ),
   description = "Our team has designed an application that is very simple to use and easy to understand by all generations. This application is targeted not only for farmers but everyone interested in bartering agricultural products.",
@@ -65,8 +65,6 @@ export default ({
   imageDecoratorBlobCss = null,
   textOnLeft = false,
 }) => {
-  // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
-
   return (
     <Container>
       <TwoColumn>
