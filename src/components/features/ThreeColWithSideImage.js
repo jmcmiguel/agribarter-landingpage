@@ -91,9 +91,9 @@ export default ({
     },
     {
       imageSrc: LocationIconImage,
-      title: "Geo-Based",
+      title: "Location Bound",
       description:
-        "Want to trade within a specified vicinity? No worries, we got you.",
+        "Want to trade within a specified city? No worries, we got you.",
     },
     {
       imageSrc: UserCheckIconImage,

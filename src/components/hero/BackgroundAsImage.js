@@ -10,6 +10,7 @@ import Header, {
   DesktopNavLinks,
 } from "../headers/light.js";
 import VeggiesImage from "images/veggies.jpg";
+import Timer from "../hero/Timer";
 
 const StyledHeader = styled(Header)`
   ${tw`pt-8 max-w-none`}
@@ -25,7 +26,7 @@ const Container = styled.div`
   background-image: url(${VeggiesImage});
 `;
 
-const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-gray-900 opacity-50`;
+const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-gray-900 opacity-75`;
 
 const HeroContainer = tw.div`z-20 relative px-4 sm:px-8 max-w-screen-xl mx-auto h-screen`;
 const TwoColumn = tw.div`pt-24 pb-32 px-4 flex justify-between items-center flex-col lg:flex-row`;
@@ -46,8 +47,12 @@ const SlantedBackground = styled.span`
   }
 `;
 
-const PrimaryAction = tw.button`px-8 py-3 mt-10 text-sm sm:text-base sm:mt-16 sm:px-8 sm:py-4 bg-gray-100 text-green-500 font-bold rounded shadow transition duration-300 hocus:bg-green-500 hocus:text-gray-100 focus:shadow-outline`;
-
+const Heading2 = styled.h1`
+  ${tw`mt-10 text-xl text-center lg:text-left sm:text-2xl lg:text-3xl xl:text-4xl font-black text-gray-100 leading-none`}
+  span {
+    ${tw`inline-block mt-2`}
+  }
+`;
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
   const navLinks = [
@@ -67,12 +72,16 @@ export default () => {
         <TwoColumn>
           <LeftColumn>
             <Heading>
-              <span>Trade Farm Goods</span>
+              <span>Agricultural Trading On</span>
               <br />
-              <span>On &nbsp;&nbsp;&nbsp;</span>
-              <SlantedBackground>Agri-Barter</SlantedBackground>
+              <span>E-Barter &nbsp;&nbsp;&nbsp;</span>
+              <SlantedBackground>Coming Soon</SlantedBackground>
             </Heading>
-            <PrimaryAction>Trade Now</PrimaryAction>
+            <Heading2>
+              <SlantedBackground>
+                <Timer />
+              </SlantedBackground>
+            </Heading2>
           </LeftColumn>
         </TwoColumn>
       </HeroContainer>

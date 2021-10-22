@@ -6,7 +6,6 @@ import {
   SectionHeading,
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
-import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import TeamIllustrationSrc from "images/team-illustration-2.svg";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 
@@ -39,22 +38,15 @@ const Heading = tw(
 )`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
 const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
-const PrimaryButton = styled(PrimaryButtonBase)(props => [
-  tw`mt-8 md:mt-8 text-sm inline-block mx-auto md:mx-0`,
-  props.buttonRounded && tw`rounded-full`,
-]);
-
 // eslint-disable-next-line import/no-anonymous-default-export
 export default ({
-  subheading = "Our Expertise",
+  subheading = "Our Mission",
   heading = (
     <>
-      Designed & Developed for <span tw="text-green-500">All Ages</span>
+      Designed & Developed for <span tw="text-green-500">Everyone</span>
     </>
   ),
   description = "Our team has designed an application that is very simple to use and easy to understand by all generations. This application is targeted not only for farmers but everyone interested in bartering agricultural products.",
-  primaryButtonText = "Learn More",
-  primaryButtonUrl = "#",
   imageSrc = TeamIllustrationSrc,
   buttonRounded = true,
   imageRounded = true,
@@ -83,12 +75,6 @@ export default ({
             <Subheading>{subheading}</Subheading>
             <Heading>{heading}</Heading>
             <Description>{description}</Description>
-            <PrimaryButton
-              buttonRounded={buttonRounded}
-              as="a"
-              href={primaryButtonUrl}>
-              {primaryButtonText}
-            </PrimaryButton>
           </TextContent>
         </TextColumn>
       </TwoColumn>
