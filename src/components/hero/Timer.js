@@ -145,7 +145,7 @@ const defaultDate = {
 
 Timer.defaultProps = {
   date: `${defaultDate.month}/${defaultDate.day}/${defaultDate.year}`,
-  time: "23:59",
+  time: "11:59",
 };
 
 export default Timer;
