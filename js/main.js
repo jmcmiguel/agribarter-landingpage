@@ -12,7 +12,7 @@
     finalDate: "November 01, 2021 12:00:00",
     // MailChimp URL
     mailChimpURL:
-      "https://facebook.us1.list-manage.com/subscribe/post?u=1abf75f6981256963a47d197a&amp;id=37c6d8f4d6",
+      "https://gmail.us5.list-manage.com/subscribe/post?u=1caa7eec8b8cdf2f289b442d6&amp;id=4fcd8457c5",
   };
 
   /* Preloader
