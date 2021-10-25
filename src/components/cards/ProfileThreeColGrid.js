@@ -14,7 +14,7 @@ import { ReactComponent as GithubIcon } from "images/github-icon.svg";
 import { ReactComponent as FacebookIcon } from "images/facebook-icon.svg";
 import ElaisaImage from "images/elaisa.jpg";
 import JustineImage from "images/justine.jpg";
-import GamelImage from "images/gamel.jpg";
+import GamelImage from "images/gamel.png";
 import MichaelImage from "images/michael.jpeg";
 
 const HeadingContainer = tw.div``;

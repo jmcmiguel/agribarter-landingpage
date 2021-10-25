@@ -75,7 +75,7 @@ export default ({
       imageSrc: MessageIconImage,
       title: "Messaging",
       description:
-        "Our application have built-in messaging capabilities so that you can directly message other users.",
+        "Our application have built-in messaging capabilities so that you can negotiate with other users.",
     },
     {
       imageSrc: SlidersIconImage,
