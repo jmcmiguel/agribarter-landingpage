@@ -94,7 +94,7 @@ export default ({
   const defaultLogoLink = (
     <LogoLink href="/">
       <img src={logo} alt="logo" />
-      Agri-Barter
+      E-Barter
     </LogoLink>
   );
 

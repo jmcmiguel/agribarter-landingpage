@@ -55,14 +55,7 @@ const Heading2 = styled.h1`
 `;
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
-  const navLinks = [
-    <NavLinks key={1}></NavLinks>,
-    <NavLinks key={2}>
-      <NavLink href="#">About</NavLink>
-      <NavLink href="#">Features</NavLink>
-      <NavLink href="#">Contact Us</NavLink>
-    </NavLinks>,
-  ];
+  const navLinks = [<NavLinks key={1} />];
 
   return (
     <Container>
