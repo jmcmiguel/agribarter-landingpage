@@ -6,12 +6,12 @@ import About from "components/features/TwoColWithButton";
 import TeamMembers from "components/cards/ProfileThreeColGrid";
 import Footer from "components/footers/MiniCenteredFooter";
 import SingleCol from "components/faqs/SingleCol";
-// import Khronos from "khronos/index-particles.html";
+import Hero from "components/hero/BackgroundAsImage";
 
 function App() {
   return (
     <AnimationWrapper>
-      {/* <Khronos /> */}
+      <Hero />
       <Features />
       <About />
       <TeamMembers />
