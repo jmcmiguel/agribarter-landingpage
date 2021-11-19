@@ -5,50 +5,50 @@
  * ------------------------------------------------------------------- */
 
 (function (html) {
-  "use strict";
+  'use strict';
 
   const cfg = {
     // Countdown Timer Final Date
-    finalDate: "November 01, 2021 12:00:00",
+    finalDate: 'December 10, 2021 11:59:00',
     // MailChimp URL
     mailChimpURL:
-      "https://gmail.us5.list-manage.com/subscribe/post?u=1caa7eec8b8cdf2f289b442d6&amp;id=4fcd8457c5",
+      'https://gmail.us5.list-manage.com/subscribe/post?u=1caa7eec8b8cdf2f289b442d6&amp;id=4fcd8457c5',
   };
 
   /* Preloader
    * -------------------------------------------------- */
   const ssPreloader = function () {
-    const body = document.querySelector("body");
-    const preloader = document.querySelector("#preloader");
-    const info = document.querySelector(".s-info");
+    const body = document.querySelector('body');
+    const preloader = document.querySelector('#preloader');
+    const info = document.querySelector('.s-info');
 
     if (!(preloader && info)) return;
 
-    html.classList.add("ss-preload");
+    html.classList.add('ss-preload');
 
-    window.addEventListener("load", function () {
-      html.classList.remove("ss-preload");
-      html.classList.add("ss-loaded");
+    window.addEventListener('load', function () {
+      html.classList.remove('ss-preload');
+      html.classList.add('ss-loaded');
 
       // page scroll position to top
-      preloader.addEventListener("transitionstart", function gotoTop(e) {
-        if (e.target.matches("#preloader")) {
+      preloader.addEventListener('transitionstart', function gotoTop(e) {
+        if (e.target.matches('#preloader')) {
           window.scrollTo(0, 0);
           preloader.removeEventListener(e.type, gotoTop);
         }
       });
 
-      preloader.addEventListener("transitionend", function afterTransition(e) {
-        if (e.target.matches("#preloader")) {
-          body.classList.add("ss-show");
-          e.target.style.display = "none";
+      preloader.addEventListener('transitionend', function afterTransition(e) {
+        if (e.target.matches('#preloader')) {
+          body.classList.add('ss-show');
+          e.target.style.display = 'none';
           preloader.removeEventListener(e.type, afterTransition);
         }
       });
     });
 
-    window.addEventListener("beforeunload", function () {
-      body.classList.remove("ss-show");
+    window.addEventListener('beforeunload', function () {
+      body.classList.remove('ss-show');
     });
   };
 
@@ -56,10 +56,10 @@
    * ------------------------------------------------------ */
   const ssCountdown = function () {
     const finalDate = new Date(cfg.finalDate).getTime();
-    const daysSpan = document.querySelector(".counter .ss-days");
-    const hoursSpan = document.querySelector(".counter .ss-hours");
-    const minutesSpan = document.querySelector(".counter .ss-minutes");
-    const secondsSpan = document.querySelector(".counter .ss-seconds");
+    const daysSpan = document.querySelector('.counter .ss-days');
+    const hoursSpan = document.querySelector('.counter .ss-hours');
+    const minutesSpan = document.querySelector('.counter .ss-minutes');
+    const secondsSpan = document.querySelector('.counter .ss-seconds');
     let timeInterval;
 
     if (!(daysSpan && hoursSpan && minutesSpan && secondsSpan)) return;
@@ -82,15 +82,15 @@
 
       if (days <= 99) {
         if (days <= 9) {
-          days = "00" + days;
+          days = '00' + days;
         } else {
-          days = "0" + days;
+          days = '0' + days;
         }
       }
 
-      hours <= 9 ? (hours = "0" + hours) : hours;
-      minutes <= 9 ? (minutes = "0" + minutes) : minutes;
-      seconds <= 9 ? (seconds = "0" + seconds) : seconds;
+      hours <= 9 ? (hours = '0' + hours) : hours;
+      minutes <= 9 ? (minutes = '0' + minutes) : minutes;
+      seconds <= 9 ? (seconds = '0' + seconds) : seconds;
 
       daysSpan.textContent = days;
       hoursSpan.textContent = hours;
@@ -105,9 +105,9 @@
   /* Swiper
    * ------------------------------------------------------ */
   const ssSwiper = function () {
-    const mySwiper = new Swiper(".swiper-container", {
+    const mySwiper = new Swiper('.swiper-container', {
       slidesPerView: 1,
-      effect: "fade",
+      effect: 'fade',
       speed: 2000,
       autoplay: {
         delay: 5000,
@@ -118,22 +118,22 @@
   /* MailChimp Form
    * ---------------------------------------------------- */
   const ssMailChimpForm = function () {
-    const mcForm = document.querySelector("#mc-form");
+    const mcForm = document.querySelector('#mc-form');
 
     if (!mcForm) return;
 
     // Add novalidate attribute
-    mcForm.setAttribute("novalidate", true);
+    mcForm.setAttribute('novalidate', true);
 
     // Field validation
     function hasError(field) {
       // Don't validate submits, buttons, file and reset inputs, and disabled fields
       if (
         field.disabled ||
-        field.type === "file" ||
-        field.type === "reset" ||
-        field.type === "submit" ||
-        field.type === "button"
+        field.type === 'file' ||
+        field.type === 'reset' ||
+        field.type === 'submit' ||
+        field.type === 'button'
       )
         return;
 
@@ -144,25 +144,25 @@
       if (validity.valid) return;
 
       // If field is required and empty
-      if (validity.valueMissing) return "Please enter an email address.";
+      if (validity.valueMissing) return 'Please enter an email address.';
 
       // If not the right type
       if (validity.typeMismatch) {
-        if (field.type === "email")
-          return "Please enter a valid email address.";
+        if (field.type === 'email')
+          return 'Please enter a valid email address.';
       }
 
       // If pattern doesn't match
       if (validity.patternMismatch) {
         // If pattern info is included, return custom error
-        if (field.hasAttribute("title")) return field.getAttribute("title");
+        if (field.hasAttribute('title')) return field.getAttribute('title');
 
         // Otherwise, generic error
-        return "Please match the requested format.";
+        return 'Please match the requested format.';
       }
 
       // If all else fails, return a generic catchall error
-      return "The value you entered for this field is invalid.";
+      return 'The value you entered for this field is invalid.';
     }
 
     // Show error message
@@ -171,11 +171,11 @@
       let id = field.id || field.name;
       if (!id) return;
 
-      let errorMessage = field.form.querySelector(".mc-status");
+      let errorMessage = field.form.querySelector('.mc-status');
 
       // Update error message
-      errorMessage.classList.remove("success-message");
-      errorMessage.classList.add("error-message");
+      errorMessage.classList.remove('success-message');
+      errorMessage.classList.add('error-message');
       errorMessage.innerHTML = error;
     }
 
@@ -188,41 +188,41 @@
       mcStatus.innerHTML = data.msg;
 
       // If error, add error class
-      if (data.result === "error") {
-        mcStatus.classList.remove("success-message");
-        mcStatus.classList.add("error-message");
+      if (data.result === 'error') {
+        mcStatus.classList.remove('success-message');
+        mcStatus.classList.add('error-message');
         return;
       }
 
       // Otherwise, add success class
-      mcStatus.classList.remove("error-message");
-      mcStatus.classList.add("success-message");
+      mcStatus.classList.remove('error-message');
+      mcStatus.classList.add('success-message');
     };
 
     // Submit the form
     function submitMailChimpForm(form) {
       let url = cfg.mailChimpURL;
-      let emailField = form.querySelector("#mce-EMAIL");
+      let emailField = form.querySelector('#mce-EMAIL');
       let serialize =
-        "&" +
+        '&' +
         encodeURIComponent(emailField.name) +
-        "=" +
+        '=' +
         encodeURIComponent(emailField.value);
 
-      if (url == "") return;
+      if (url == '') return;
 
-      url = url.replace("/post?u=", "/post-json?u=");
-      url += serialize + "&c=displayMailChimpStatus";
+      url = url.replace('/post?u=', '/post-json?u=');
+      url += serialize + '&c=displayMailChimpStatus';
 
       // Create script with url and callback (if specified)
-      var ref = window.document.getElementsByTagName("script")[0];
-      var script = window.document.createElement("script");
+      var ref = window.document.getElementsByTagName('script')[0];
+      var script = window.document.createElement('script');
       script.src = url;
 
       // Create global variable for the status container
-      window.mcStatus = form.querySelector(".mc-status");
-      window.mcStatus.classList.remove("error-message", "success-message");
-      window.mcStatus.innerText = "Submitting...";
+      window.mcStatus = form.querySelector('.mc-status');
+      window.mcStatus.classList.remove('error-message', 'success-message');
+      window.mcStatus.innerText = 'Submitting...';
 
       // Insert script tag into the DOM
       ref.parentNode.insertBefore(script, ref);
@@ -235,11 +235,11 @@
 
     // Check email field on submit
     mcForm.addEventListener(
-      "submit",
+      'submit',
       function (event) {
         event.preventDefault();
 
-        let emailField = event.target.querySelector("#mce-EMAIL");
+        let emailField = event.target.querySelector('#mce-EMAIL');
         let error = hasError(emailField);
 
         if (error) {
@@ -257,9 +257,9 @@
   /* Tabs
    * ---------------------------------------------------- */
   const sstabs = function (nextTab = false) {
-    const tabList = document.querySelector(".tab-nav__list");
-    const tabPanels = document.querySelectorAll(".tab-content__item");
-    const tabItems = document.querySelectorAll(".tab-nav__list li");
+    const tabList = document.querySelector('.tab-nav__list');
+    const tabPanels = document.querySelectorAll('.tab-content__item');
+    const tabItems = document.querySelectorAll('.tab-nav__list li');
     const tabLinks = [];
 
     if (!(tabList && tabPanels)) return;
@@ -273,30 +273,30 @@
     ) {
       // Reset all the tablinks
       tabLinks.forEach(function (link) {
-        link.setAttribute("tabindex", "-1");
-        link.setAttribute("aria-selected", "false");
-        link.parentNode.removeAttribute("data-tab-active");
-        link.removeAttribute("data-tab-active");
+        link.setAttribute('tabindex', '-1');
+        link.setAttribute('aria-selected', 'false');
+        link.parentNode.removeAttribute('data-tab-active');
+        link.removeAttribute('data-tab-active');
       });
 
       // set the active link attributes
-      tabLink.setAttribute("tabindex", "0");
-      tabLink.setAttribute("aria-selected", "true");
-      tabLink.parentNode.setAttribute("data-tab-active", "");
-      tabLink.setAttribute("data-tab-active", "");
+      tabLink.setAttribute('tabindex', '0');
+      tabLink.setAttribute('aria-selected', 'true');
+      tabLink.parentNode.setAttribute('data-tab-active', '');
+      tabLink.setAttribute('data-tab-active', '');
 
       // Change tab panel visibility
       tabPanels.forEach(function (panel, index) {
         if (index != linkIndex) {
-          panel.setAttribute("aria-hidden", "true");
-          panel.removeAttribute("data-tab-active");
+          panel.setAttribute('aria-hidden', 'true');
+          panel.removeAttribute('data-tab-active');
         } else {
-          panel.setAttribute("aria-hidden", "false");
-          panel.setAttribute("data-tab-active", "");
+          panel.setAttribute('aria-hidden', 'false');
+          panel.setAttribute('data-tab-active', '');
         }
       });
 
-      window.dispatchEvent(new Event("resize"));
+      window.dispatchEvent(new Event('resize'));
     };
 
     const keyboardEvent = function (
@@ -316,7 +316,7 @@
 
       // ArrowRight and ArrowLeft are the values when event.key is supported
       switch (keyCode) {
-        case "ArrowLeft":
+        case 'ArrowLeft':
         case 37:
           e.preventDefault();
 
@@ -327,7 +327,7 @@
           }
           break;
 
-        case "ArrowRight":
+        case 'ArrowRight':
         case 39:
           e.preventDefault();
 
@@ -341,35 +341,35 @@
     };
 
     // Add accessibility roles and labels
-    tabList.setAttribute("role", "tablist");
+    tabList.setAttribute('role', 'tablist');
     tabItems.forEach(function (item, index) {
-      let link = item.querySelector("a");
+      let link = item.querySelector('a');
 
       // collect tab links
       tabLinks.push(link);
-      item.setAttribute("role", "presentation");
+      item.setAttribute('role', 'presentation');
 
       if (index == 0) {
-        item.setAttribute("data-tab-active", "");
+        item.setAttribute('data-tab-active', '');
       }
     });
 
     // Set up tab links
     tabLinks.forEach(function (link, i) {
-      let anchor = link.getAttribute("href").split("#")[1];
+      let anchor = link.getAttribute('href').split('#')[1];
       let attributes = {
-        id: "tab-link-" + i,
-        role: "tab",
-        tabIndex: "-1",
-        "aria-selected": "false",
-        "aria-controls": anchor,
+        id: 'tab-link-' + i,
+        role: 'tab',
+        tabIndex: '-1',
+        'aria-selected': 'false',
+        'aria-controls': anchor,
       };
 
       // if it's the first element update the attributes
       if (i == 0) {
-        attributes["aria-selected"] = "true";
-        attributes.tabIndex = "0";
-        link.setAttribute("data-tab-active", "");
+        attributes['aria-selected'] = 'true';
+        attributes.tabIndex = '0';
+        link.setAttribute('data-tab-active', '');
       }
 
       // Add the various accessibility roles and labels to the links
@@ -378,17 +378,17 @@
       }
 
       // Click Event Listener
-      link.addEventListener("click", function (e) {
+      link.addEventListener('click', function (e) {
         e.preventDefault();
       });
 
       // Click Event Listener
-      link.addEventListener("focus", function (e) {
+      link.addEventListener('focus', function (e) {
         tabClickEvent(this, tabLinks, tabPanels, i, e);
       });
 
       // Keyboard event listener
-      link.addEventListener("keydown", function (e) {
+      link.addEventListener('keydown', function (e) {
         keyboardEvent(link, tabLinks, tabPanels, tabItems, i, e);
       });
     });
@@ -396,24 +396,24 @@
     // Set up tab panels
     tabPanels.forEach(function (panel, i) {
       let attributes = {
-        role: "tabpanel",
-        "aria-hidden": "true",
-        "aria-labelledby": "tab-link-" + i,
+        role: 'tabpanel',
+        'aria-hidden': 'true',
+        'aria-labelledby': 'tab-link-' + i,
       };
 
       if (nextTab) {
-        let nextTabLink = document.createElement("a");
+        let nextTabLink = document.createElement('a');
         let nextTabLinkIndex = i < tabPanels.length - 1 ? i + 1 : 0;
 
         // set up next tab link
-        nextTabLink.setAttribute("href", "#tab-link-" + nextTabLinkIndex);
-        nextTabLink.textContent = "Next Tab";
+        nextTabLink.setAttribute('href', '#tab-link-' + nextTabLinkIndex);
+        nextTabLink.textContent = 'Next Tab';
         panel.appendChild(nextTabLink);
       }
 
       if (i == 0) {
-        attributes["aria-hidden"] = "false";
-        panel.setAttribute("data-tab-active", "");
+        attributes['aria-hidden'] = 'false';
+        panel.setAttribute('data-tab-active', '');
       }
 
       for (let key in attributes) {
@@ -425,16 +425,16 @@
   /* Alert Boxes
    * ------------------------------------------------------ */
   const ssAlertBoxes = function () {
-    const boxes = document.querySelectorAll(".alert-box");
+    const boxes = document.querySelectorAll('.alert-box');
 
     boxes.forEach(function (box) {
-      box.addEventListener("click", function (event) {
-        if (event.target.matches(".alert-box__close")) {
+      box.addEventListener('click', function (event) {
+        if (event.target.matches('.alert-box__close')) {
           event.stopPropagation();
-          event.target.parentElement.classList.add("hideit");
+          event.target.parentElement.classList.add('hideit');
 
           setTimeout(function () {
-            box.style.display = "none";
+            box.style.display = 'none';
           }, 500);
         }
       });
@@ -467,13 +467,13 @@
       },
     };
 
-    const triggers = document.querySelectorAll(".smoothscroll");
+    const triggers = document.querySelectorAll('.smoothscroll');
 
     const moveTo = new MoveTo(
       {
         tolerance: 0,
         duration: 1200,
-        easing: "easeInOutCubic",
+        easing: 'easeInOutCubic',
         container: window,
       },
       easeFunctions
